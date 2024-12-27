@@ -21,8 +21,6 @@
         <script href="js/_buildManifest.js" defer=""></script>
         <script src="js/_ssgManifest.js" defer=""></script>
         <style>
-            
-
         .rt-Box.css-yx06cd {
             width: 100%;
             max-width: 100%;
@@ -40,6 +38,9 @@
             .carousel-slider {
                 display: flex;
                 transition: transform 0.5s ease-in-out;
+                position: relative;
+                overflow: hidden;
+                width: 100%;
             }
 
             .carousel-slider img {
@@ -51,8 +52,9 @@
             .slide {
                 min-width: 100%;
                 display: none;
+                
             }
-    
+
             .slide.selected {
                 display: block;
             }
@@ -82,10 +84,39 @@
             .control-next {
                 right: 10px;
             }
+            
+            .rt-Box.css-yx06cd#footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: white;
+                padding: 1em;
+                box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            p#footer-text {
+                align-self: center;
+                text-align: center;
+                text-justify: center;
+                justify-content: center;
+            }
+
+            .rt-Text#footer-text {
+                color: black;
+                text-align: center;
+                font-weight: bold;
+                font-size: 0.8em;
+                justify-content: center;
+                align-items: center;
+            }
+
         </style>
     </head>
     <body>
-        
         <div id="home">
             <script>((e,o,s,u,d,m,l,h)=>{let i=document.documentElement,T=["light","dark"];function p(a){(Array.isArray(e)?e:[e]).forEach(g=>{let k=g==="class",S=k&&m?d.map(f=>m[f]||f):d;k?(i.classList.remove(...S),i.classList.add(a)):i.setAttribute(g,a)}),R(a)}function R(a){h&&T.includes(a)&&(i.style.colorScheme=a)}function c(){return window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(u)p(u);else try{let a=localStorage.getItem(o)||s,g=l&&a==="system"?c():a;p(g)}catch(a){}})("class","theme","system",null,["light","dark"],null,true,true)</script>
             <style data-emotion="css 1ph6igx">.css-1ph6igx{background-color:white;color:black;}</style>
@@ -304,12 +335,12 @@ function updateStatus(statusId, current, total) {
         <div class="rt-Container rt-r-size-3 css-1agpz05">
             <div class="rt-ContainerInner">
                 <div class="rt-Box">
-                    <style data-emotion="css xso6yn">.css-xso6yn{font-size:2em;color:dark;variant:resume;text-decoration-thickness:2.5px;font-weight:bold;pb:2;margin-top:40px!important;margin-bottom:10px;}</style>
-                    <h2 class="rt-Heading rt-r-size-6 css-xso6yn">Click the button below to download my resume.</h2>
+                    <style data-emotion="css xso6yn">.css-xso6yn{font-size:1.5em;color:dark;variant:resume;text-decoration-thickness:2.5px;font-weight:bold;pb:2;margin-top:40px!important;margin-bottom:10px;}</style>
+                    <h2 class="rt-Heading rt-r-size-6 css-xso6yn" style="text-align: center; margin-right: 22.5%;">Click the button below to download my resume.</h2>
                 </div>
                 <style data-emotion="css 1quahrf">.css-1quahrf{width:15em;color:white;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;margin-left:25%;background-color:rgba(100, 100, 100, 100);}</style>
                 <a href="docs/resume_wd.pdf" download>
-                    <button data-accent-color="" class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button css-1quahrf">Download Resume PDF</button>
+                    <button data-accent-color="" class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button css-1quahrf" style="align-self: center; margin-left: 27%;">Download Resume PDF</button>
                 </a>
             </div>
         </div>
@@ -318,8 +349,8 @@ function updateStatus(statusId, current, total) {
 
 <style data-emotion="css 1qp4zkb">.css-1qp4zkb{align:center;justify:center;margin-top:60px;justify-self:center;-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;margin-left:50%;height:auto;padding:1em;width:100%;}</style>
 
-<div class="rt-Box css-1qp4zkb">
-    <p class="rt-Text">Developed by Matias Morcos. All rights reserved. © 2024</p>
+<div class="rt-Box css-1qp4zkb" id="footer">
+    <p class="rt-Text" id="footer-text" style="text-align: center; margin-right: 50%;" >Developed by Matias Morcos. All rights reserved. © 2024</p>
 </div>
 </div>
 </div>
