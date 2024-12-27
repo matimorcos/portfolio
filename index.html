@@ -229,12 +229,34 @@
             <img alt="Project 1" src="img/icl_ums_c5.jpg" style="width: 100%; height: 400px;"/>
         </div>
     </div>
-    <button type="button" aria-label="previous slide / item" class="control-arrow control-prev" onclick="prevSlide()">&#9664;</button>
-    <button type="button" aria-label="next slide / item" class="control-arrow control-next" onclick="nextSlide()">&#9654;</button>
+    <button type="button" aria-label="previous slide / item" class="control-arrow control-prev" onclick="prevSlide('carousel-slides', 'carousel-status')">&#9664;</button>
+    <button type="button" aria-label="next slide / item" class="control-arrow control-next" onclick="nextSlide('carousel-slides', 'carousel-status')">&#9654;</button>
     <p class="carousel-status" id="carousel-status">1 of 2</p>
 </div>
+<div class="carousel-root">
+    <div class="carousel-slider" id="carousel-slides-2">
+        <div class="slide selected">
+            <img alt="Project 2" src="img/s21_lms_c1.jpg" style="width: 100%; height: 400px;"/>
+        </div>
+        <div class="slide">
+            <img alt="Project 2" src="img/s21_lms_c2.jpg" style="width: 100%; height: 400px;"/>
+        </div>
+        <div class="slide">
+            <img alt="Project 2" src="img/s21_lms_c3.jpg" style="width: 100%; height: 400px;"/>
+        </div>
+        <div class="slide">
+            <img alt="Project 2" src="img/s21_lms_c4.jpg" style="width: 100%; height: 400px;"/>
+        </div>
+        <div class="slide">
+            <img alt="Project 2" src="img/s21_lms_c5.jpg" style="width: 100%; height: 400px;"/>
+        </div>
+    </div>
+    <button type="button" aria-label="previous slide / item" class="control-arrow control-prev" onclick="prevSlide('carousel-slides-2', 'carousel-status-2')">&#9664;</button>
+    <button type="button" aria-label="next slide / item" class="control-arrow control-next" onclick="nextSlide('carousel-slides-2', 'carousel-status-2')">&#9654;</button>
+    <p class="carousel-status" id="carousel-status-2">1 of 2</p>
+</div>
 <script>
-    function scrollToSection(event, sectionId) {
+    function scrollToSection(event, sectionId) {    
             event.preventDefault();
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
@@ -250,17 +272,29 @@
         status.textContent = `${index + 1} of ${slides.length}`;
     }
 
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    }
+    function prevSlide(carouselId, statusId) {
+    const carousel = document.getElementById(carouselId);
+    const slides = carousel.getElementsByClassName('slide');
+    let selectedIndex = Array.from(slides).findIndex(slide => slide.classList.contains('selected'));
+    slides[selectedIndex].classList.remove('selected');
+    selectedIndex = (selectedIndex - 1 + slides.length) % slides.length;
+    slides[selectedIndex].classList.add('selected');
+    updateStatus(statusId, selectedIndex + 1, slides.length);
+}
 
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-    }
+function nextSlide(carouselId, statusId) {
+    const carousel = document.getElementById(carouselId);
+    const slides = carousel.getElementsByClassName('slide');
+    let selectedIndex = Array.from(slides).findIndex(slide => slide.classList.contains('selected'));
+    slides[selectedIndex].classList.remove('selected');
+    selectedIndex = (selectedIndex + 1) % slides.length;
+    slides[selectedIndex].classList.add('selected');
+    updateStatus(statusId, selectedIndex + 1, slides.length);
+}
 
-    showSlide(currentSlide);
+function updateStatus(statusId, current, total) {
+    document.getElementById(statusId).textContent = `${current} of ${total}`;
+}
 </script>
 
 <div class="rt-Flex">
